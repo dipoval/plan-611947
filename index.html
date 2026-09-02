@@ -266,6 +266,26 @@
 </head>
 <body>
 
+<div id="lsDiag" style="display:none; background:#C23B3B; color:#fff; font:13px system-ui; padding:10px 14px; text-align:center;"></div>
+<script>
+(function(){
+  var el = document.getElementById("lsDiag");
+  try {
+    var k = "__lsTest__";
+    localStorage.setItem(k, "1");
+    var v = localStorage.getItem(k);
+    localStorage.removeItem(k);
+    if (v !== "1") {
+      el.style.display = "block";
+      el.textContent = "DIAGNÓSTICO: localStorage escribe pero no lee de vuelta (valor: " + v + ")";
+    }
+  } catch(e) {
+    el.style.display = "block";
+    el.textContent = "DIAGNÓSTICO: localStorage bloqueado — " + e.name + ": " + e.message;
+  }
+})();
+</script>
+
 <div class="topbar">
   <span class="brand">Plan 6 Meses</span>
   <button class="icon-btn" id="themeToggle" type="button" aria-label="Cambiar tema" title="Cambiar tema">
