@@ -266,23 +266,34 @@
 </head>
 <body>
 
-<div id="lsDiag" style="display:none; background:#C23B3B; color:#fff; font:13px system-ui; padding:10px 14px; text-align:center;"></div>
+<div id="lsDiag" style="display:block; background:#2B4BE0; color:#fff; font:13px system-ui; padding:10px 14px; text-align:center;"></div>
 <script>
 (function(){
   var el = document.getElementById("lsDiag");
+  var lines = [];
+  lines.push("origin: " + location.origin + location.pathname);
   try {
-    var k = "__lsTest__";
-    localStorage.setItem(k, "1");
-    var v = localStorage.getItem(k);
-    localStorage.removeItem(k);
-    if (v !== "1") {
-      el.style.display = "block";
-      el.textContent = "DIAGNÓSTICO: localStorage escribe pero no lee de vuelta (valor: " + v + ")";
+    var probeKey = "__lsProbe__";
+    var prev = localStorage.getItem(probeKey);
+    if (prev) {
+      var ageSec = Math.round((Date.now() - parseInt(prev, 10)) / 1000);
+      lines.push("MARCADOR ANTERIOR ENCONTRADO — persistencia OK (guardado hace " + ageSec + "s)");
+    } else {
+      lines.push("Sin marcador anterior — primera carga (o no persistió). Marcador creado ahora.");
     }
+    localStorage.setItem(probeKey, String(Date.now()));
+
+    var appKeys = [];
+    for (var i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      if (key.indexOf("ricardo_") === 0) appKeys.push(key + "=" + localStorage.getItem(key));
+    }
+    lines.push(appKeys.length ? ("Claves de la app en storage: " + appKeys.join(" | ")) : "Sin claves de la app (ricardo_*) todavía.");
   } catch(e) {
-    el.style.display = "block";
-    el.textContent = "DIAGNÓSTICO: localStorage bloqueado — " + e.name + ": " + e.message;
+    el.style.background = "#C23B3B";
+    lines = ["BLOQUEADO — " + e.name + ": " + e.message];
   }
+  el.textContent = lines.join(" · ");
 })();
 </script>
 
