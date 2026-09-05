@@ -368,7 +368,7 @@
               </table>
             </div>
             <p style="margin-top:10px; font-size:12px; color:var(--ink-2);">Descanso entre escalones: <strong>3–4 min</strong>. Solo en compuestos principales y en los bloques donde corresponde.</p>
-            <p style="margin-top:6px; font-size:12px; color:var(--ink-2);">El tope real <strong>ondula semana a semana</strong> dentro de cada bloque de fuerza (90% → 93% → 96% → 99%, repitiendo cada 4 semanas) — no se exige 99% en cada sesión. El peso muerto rumano nunca pasa de 93%. El tope exacto de esta semana aparece en la pestaña «Hoy».</p>
+            <p style="margin-top:6px; font-size:12px; color:var(--ink-2);">Dado el dolor activo reportado en tu ficha, el tope real de este programa está <strong>fijo en 93% 1RM en todos los ejercicios</strong> (nunca 96–99% — a diferencia de un perfil sin dolor). Dentro de ese límite, el tope de la semana ondula entre 90% y 93%. El tope exacto de esta semana aparece en la pestaña «Hoy».</p>
           </div>
 
           <div class="card panel">
@@ -466,7 +466,7 @@
         <div class="card panel">
           <ul class="plain">
             <li><strong>Dolor actual al moverte reportado en tu ficha:</strong> se recomienda evaluación profesional antes de empezar. Este plan se construyó a partir del tamizaje básico de tu ficha de entrenamiento (Sesión 1, Taller de Entrenamiento Funcional) — no reemplaza esa evaluación.</li>
-            <li>Detén cualquier ejercicio que reproduzca el dolor de pie y codo izquierdos. Trabaja siempre dentro de un rango sin dolor, especialmente en sentadilla, zancada, elevación de talones, press y curl.</li>
+            <li>Detén cualquier ejercicio que reproduzca el dolor de pie y codo izquierdos. Trabaja siempre dentro de un rango sin dolor, especialmente en prensa de piernas, elevación de talones, press y curl.</li>
             <li>El método ladder cercano al 100% de 1RM (bloques de fuerza) exige técnica ya consolidada. Si tienes dudas sobre la ejecución de un ejercicio nuevo, practícalo con carga baja o pide supervisión antes de acercarte al máximo.</li>
             <li>Actualiza tu 1RM en cada semana de retest (1, 8, 12, 20 y 24). Entrenar con un 1RM desactualizado hace que los porcentajes pierdan precisión.</li>
             <li>Las semanas de deload (8 y 20) son parte del plan, no un extra opcional.</li>
@@ -584,28 +584,28 @@
   };
 
   var EXERCISES = {
-    boxSquat: { name:"Sentadilla a caja con apoyo", en:"Assisted Box Squat", patron:"Rodilla (bilateral)", musculos:"Cuádriceps, glúteo, core", icon:"squat", loaded:true, safety:"pie", capFuerza:93,
-      cues:["Apóyate con una mano en el rack o banco para controlar el descenso","Baja con control hasta tocar la caja/banco, sin dolor en el pie de apoyo","Empuja parejo con toda la planta del pie al subir"] },
-    rdl:      { name:"Peso muerto rumano con mancuernas", en:"Romanian Deadlift", patron:"Bisagra de cadera", musculos:"Isquiotibiales, glúteo, lumbar", icon:"hinge", loaded:true, capFuerza:93,
-      cues:["Mancuernas pegadas a las piernas","Bisagra desde la cadera, espalda neutra","Rodillas con flexión mínima y fija","Único ejercicio de bisagra del programa: tope propio de 93% 1RM (nunca 96–99%) por seguridad lumbar"] },
-    splitSquat:{ name:"Zancada estática asistida (split squat corto)", en:"Assisted Static Split Squat", patron:"Rodilla (unilateral)", musculos:"Cuádriceps, glúteo", icon:"squat", loaded:true, safety:"pie",
-      cues:["Apóyate en el rack o banco para no depender del equilibrio del pie","Recorrido corto — baja solo hasta donde el pie izquierdo no duela","Si aparece dolor en el pie de apoyo, reduce el paso o cambia a step-up bajo"] },
-    hipthrust:{ name:"Hip thrust con barra o mancuerna", en:"Barbell Hip Thrust", patron:"Extensión de cadera", musculos:"Glúteo", icon:"hipext", loaded:true, capFuerza:93,
-      cues:["Usa protector/almohadilla sobre la cadera","Mentón metido, sin hiperextender la lumbar arriba","Aprieta el glúteo con fuerza en el tope"] },
-    bench:    { name:"Press de banca con mancuernas (agarre neutro)", en:"Neutral-Grip Dumbbell Bench Press", patron:"Empuje horizontal", musculos:"Pectoral, tríceps, deltoide anterior", icon:"pushh", loaded:true, safety:"codo", capFuerza:93,
-      cues:["Agarre neutro (palmas enfrentadas) para aliviar el codo izquierdo","Baja controlado hasta la altura del pecho","No bloquees el codo con fuerza al extender arriba — detente si duele"] },
-    row:      { name:"Remo con mancuerna a un brazo, apoyo en banco", en:"One-Arm Dumbbell Row", patron:"Tracción horizontal", musculos:"Dorsal, romboides, bíceps", icon:"pullh", loaded:true, safety:"codo", capFuerza:93,
-      cues:["Espalda neutra, apoyo en banco","Codo hacia atrás, no hacia arriba","Tracción controlada, sin tirón brusco que fuerce el codo"] },
-    ohp:      { name:"Press militar con mancuernas (agarre neutro)", en:"Neutral-Grip Dumbbell Overhead Press", patron:"Empuje vertical", musculos:"Deltoides, tríceps", icon:"pushv", loaded:true, safety:"codo", capFuerza:93,
-      cues:["Core apretado, sin arquear la lumbar en exceso","Trayectoria casi vertical de la mancuerna","Si el codo duele al extender arriba, reduce el rango final"] },
+    legPress: { name:"Prensa de piernas", en:"Leg Press Machine", patron:"Rodilla (bilateral)", musculos:"Cuádriceps, glúteo, core", icon:"squat", loaded:true, safety:"pie", capFuerza:93,
+      cues:["Ajusta el respaldo para que la rodilla no pase de 90° si te genera molestia","Empuja parejo con toda la planta del pie, sin bloquear la rodilla al extender","Si aparece dolor en el pie izquierdo, reduce el rango o la carga"] },
+    rdl:      { name:"Peso muerto rumano en polea baja", en:"Cable Romanian Deadlift", patron:"Bisagra de cadera", musculos:"Isquiotibiales, glúteo, lumbar", icon:"hinge", loaded:true, capFuerza:93,
+      cues:["Barra o cuerda de la polea baja pegada a las piernas","Bisagra desde la cadera, espalda neutra","Rodillas con flexión mínima y fija","Único ejercicio de bisagra del programa: tope propio de 93% 1RM (nunca 96–99%) por seguridad lumbar"] },
+    legPressUni:{ name:"Prensa de piernas a una pierna", en:"Single-Leg Leg Press", patron:"Rodilla (unilateral)", musculos:"Cuádriceps, glúteo", icon:"squat", loaded:true, safety:"pie",
+      cues:["Parte con la mitad o menos de la carga que usas a dos piernas","Empuja parejo con toda la planta del pie de ese lado, sin bloquear la rodilla","Si aparece dolor en el pie izquierdo, reduce el rango o vuelve a la prensa a dos piernas"] },
+    gluteKick:{ name:"Patada de glúteo en polea baja", en:"Cable Glute Kickback", patron:"Extensión de cadera", musculos:"Glúteo", icon:"hipext", loaded:true, capFuerza:93,
+      cues:["Tobillera de la polea baja enganchada al tobillo, apoyo firme en el pie de base","Empuja la pierna hacia atrás y arriba apretando el glúteo, sin arquear la lumbar","Controla el regreso, no dejes que la polea tire de golpe"] },
+    bench:    { name:"Press de pecho en máquina (agarre neutro)", en:"Machine Chest Press (neutral grip)", patron:"Empuje horizontal", musculos:"Pectoral, tríceps, deltoide anterior", icon:"pushh", loaded:true, safety:"codo", capFuerza:93,
+      cues:["Agarre neutro (palmas enfrentadas) para aliviar el codo izquierdo","Ajusta el asiento para que las manijas queden a la altura del pecho","No bloquees el codo con fuerza al extender — detente si duele"] },
+    row:      { name:"Remo sentado en polea (agarre neutro)", en:"Seated Cable Row (neutral grip)", patron:"Tracción horizontal", musculos:"Dorsal, romboides, bíceps", icon:"pullh", loaded:true, safety:"codo", capFuerza:93,
+      cues:["Espalda neutra, pecho alto durante toda la tracción","Codos hacia atrás pegados al torso, no hacia arriba","Tracción controlada, sin tirón brusco que fuerce el codo"] },
+    ohp:      { name:"Press de hombro en máquina (agarre neutro)", en:"Machine Shoulder Press (neutral grip)", patron:"Empuje vertical", musculos:"Deltoides, tríceps", icon:"pushv", loaded:true, safety:"codo", capFuerza:93,
+      cues:["Ajusta el asiento para que las manijas partan a la altura del hombro","Trayectoria guiada por la máquina — controla la bajada","Si el codo duele al extender arriba, reduce el rango final"] },
     latpull:  { name:"Jalón al pecho, agarre cerrado neutro", en:"Close-Grip Neutral Lat Pulldown", patron:"Tracción vertical", musculos:"Dorsal, bíceps", icon:"pullv", loaded:true, safety:"codo", capFuerza:93,
       cues:["Pecho alto, leve inclinación hacia atrás","Barra hacia la clavícula, no hacia el cuello","Controla el regreso, no dejes caer el peso"] },
-    curl:     { name:"Curl martillo con mancuernas (agarre neutro)", en:"Hammer Curl", patron:"Aislado — codo", musculos:"Bíceps", icon:"iso", loaded:true, safety:"codo",
-      cues:["Codos fijos junto al torso","Agarre neutro — más cómodo para el codo izquierdo que el curl supino","Controla la bajada, sin estirar el codo con fuerza al final"] },
+    curl:     { name:"Curl de bíceps en polea baja (cuerda)", en:"Cable Curl (rope attachment)", patron:"Aislado — codo", musculos:"Bíceps", icon:"iso", loaded:true, safety:"codo",
+      cues:["Codos fijos junto al torso","Agarre neutro con la cuerda — más cómodo para el codo izquierdo que una barra recta","Controla la bajada, sin estirar el codo con fuerza al final"] },
     tricep:   { name:"Extensión de tríceps en polea, rango medio", en:"Tricep Pushdown (partial range)", patron:"Aislado — codo", musculos:"Tríceps", icon:"iso", loaded:true, safety:"codo",
       cues:["Codos fijos junto al torso","Rango medio — no busques el bloqueo final si el codo izquierdo duele","No uses impulso del hombro"] },
-    calf:     { name:"Elevación de talones de pie, con apoyo", en:"Assisted Standing Calf Raise", patron:"Tobillo", musculos:"Gemelos", icon:"calf", loaded:true, safety:"pie",
-      cues:["Sujétate de una barra o rack para el equilibrio","Sube hasta la punta del pie con control","Baja solo hasta donde NO sientas dolor en el pie izquierdo"] },
+    calf:     { name:"Elevación de talones en máquina, sentado", en:"Seated Calf Raise Machine", patron:"Tobillo", musculos:"Gemelos", icon:"calf", loaded:true, safety:"pie",
+      cues:["Ajusta la almohadilla sobre los muslos antes de empezar","Sube hasta la punta del pie con control","Baja solo hasta donde NO sientas dolor en el pie izquierdo"] },
     plank:    { name:"Plancha con apoyo en rodillas", en:"Knee Plank", patron:"Core (anti-extensión)", musculos:"Recto abdominal, transverso", icon:"core", loaded:false,
       cues:["Línea recta de hombro a rodilla","Glúteos y abdomen activos","Respira, no aguantes el aire"],
       bw:{1:{sets:3,detail:"20–30 seg"}, 2:{sets:3,detail:"30–40 seg"}, 3:{sets:3,detail:"35–45 seg"}, 4:{sets:3,detail:"40–50 seg (mantener)"}} },
@@ -623,7 +623,7 @@
   function dayFull(){
     var buildA = function(ladderForCompounds, withPotencia){
       var ej = [
-        {id:"boxSquat", ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
+        {id:"legPress", ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
         {id:"rdl",      ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
         {id:"bench",    ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
         {id:"row",      ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
@@ -635,8 +635,8 @@
     };
     var buildB = function(ladderForCompounds, withPotencia){
       var ej = [
-        {id:"splitSquat", ladder:"hipertrofia"},
-        {id:"hipthrust",  ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
+        {id:"legPressUni", ladder:"hipertrofia"},
+        {id:"gluteKick",   ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
         {id:"ohp",        ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
         {id:"latpull",    ladder:(ladderForCompounds==="fuerza")?"fuerza":"hipertrofia"},
         {id:"tricep",     ladder:"hipertrofia"},
@@ -675,7 +675,7 @@
         {id:"B2", weekday:"Día 6", short:"Full Body B", ladderTag:"fuerza", nombre:"Día 6 · Full Body B (fuerza en compuestos)", ej:DF.B("fuerza", true)}
       ] },
     { id:3, key:"especializacion", nombre:"Especialización", sub:"Fuerza sarcomérica + potencia", weeks:"Semanas 13–20", weekStart:13, weekEnd:20, color:"accent",
-      resumen:"Los compuestos con base de apoyo estable (sentadilla a caja, press de banca, remo con apoyo en banco, press militar, jalón, hip thrust) usan ladder fuerza, con tope propio de 93% por ser un perfil con dolor activo — nunca 96–99%. El peso muerto rumano tiene el mismo tope de 93% por ser el único ejercicio de bisagra del programa. La zancada asistida, el curl, la extensión de tríceps y los gemelos se quedan siempre en ladder hipertrofia: la zancada por cargar una base inestable a una pierna con el pie afectado, y los otros tres por ser aislamiento articular de bajo retorno para trabajar cerca del máximo — el codo/pie no se benefician de cargas cercanas al 1RM en ejercicios de aislamiento. La potencia sigue sin impacto, con más series que en el Bloque 2. Semana 20: deload + retest.",
+      resumen:"Los compuestos en máquina o polea (prensa de piernas, press de pecho en máquina, remo en polea sentado, press de hombro en máquina, jalón, patada de glúteo en polea) usan ladder fuerza, con tope propio de 93% por ser un perfil con dolor activo — nunca 96–99%. El peso muerto rumano tiene el mismo tope de 93% por ser el único ejercicio de bisagra del programa. La prensa de piernas a una pierna, el curl, la extensión de tríceps y los gemelos se quedan siempre en ladder hipertrofia: la prensa unilateral por cargar el pie afectado a una sola pierna, y los otros tres por ser aislamiento articular de bajo retorno para trabajar cerca del máximo — el codo/pie no se benefician de cargas cercanas al 1RM en ejercicios de aislamiento. La potencia sigue sin impacto, con más series que en el Bloque 2. Semana 20: deload + retest.",
       progresion:"Misma regla de autorregulación, pero el tope real nunca pasa de 93% en ningún ejercicio de este programa (rango de dolor activo) — no ondula hasta 99% como en un perfil sin dolor. Revisa el tope exacto de hoy en la pestaña «Hoy». Prioriza técnica sobre completar el escalón, y detén cualquier serie que reproduzca dolor en el pie o el codo izquierdo.",
       dias:[
         {id:"A", weekday:"Día 1 y 5", short:"Full Body A", ladderTag:"fuerza", nombre:"Día 1 y 5 · Full Body A", ej:DF.A("fuerza", true)},
@@ -695,14 +695,18 @@
   var DELOAD_WEEKS = [8,20];
   var RETEST_WEEKS = [1,8,12,20,24];
 
+  // Única fuente de verdad del calendario semanal: slot "A"/"B" + occ (1ª o 2ª
+  // vez esa sesión en la semana) referencian el/los id(s) del día del bloque
+  // activo (ver BLOCKS más abajo). resolveSession() lee esto directamente — no
+  // hay una segunda copia hardcodeada en el motor.
   var WEEK_TEMPLATE = [
-    {num:"Día 1", name:"Gimnasio · Full Body A", tag:"gym"},
-    {num:"Día 2", name:"Gimnasio · Full Body B", tag:"gym"},
-    {num:"Día 3", name:"Descanso", tag:"rest"},
-    {num:"Día 4", name:"Casa · Movilidad + cardio opcional", tag:"home"},
-    {num:"Día 5", name:"Gimnasio · Full Body A", tag:"gym"},
-    {num:"Día 6", name:"Gimnasio · Full Body B", tag:"gym"},
-    {num:"Día 7", name:"Descanso", tag:"rest"}
+    {num:"Día 1", name:"Gimnasio · Full Body A", tag:"gym", slot:"A", occ:1},
+    {num:"Día 2", name:"Gimnasio · Full Body B", tag:"gym", slot:"B", occ:1},
+    {num:"Día 3", name:"Descanso", tag:"rest", slot:null, occ:null},
+    {num:"Día 4", name:"Casa · Movilidad + cardio opcional", tag:"home", slot:null, occ:null},
+    {num:"Día 5", name:"Gimnasio · Full Body A", tag:"gym", slot:"A", occ:2},
+    {num:"Día 6", name:"Gimnasio · Full Body B", tag:"gym", slot:"B", occ:2},
+    {num:"Día 7", name:"Descanso", tag:"rest", slot:null, occ:null}
   ];
 
   var MOBILITY = [
@@ -962,17 +966,16 @@
   function weekFromProgramDay(pd){ return Math.ceil(pd/7); }
   function dowFromProgramDay(pd){ return ((pd-1)%7)+1; } // 1..7 within the training week
 
-  // Resolves which session happens on a given day-of-week within a given block:
-  // dow 1&5 -> the block's "A" slot, dow 2&6 -> the block's "B" slot, dow 3&7 -> rest, dow 4 -> home.
-  // Blocks with 2 day-variants (1,3) reuse the same A/B twice a week; blocks with 4
-  // variants (2,4) have a distinct fuerza/hipertrofia version for each occurrence.
+  // Resolves which session happens on a given day-of-week within a given block.
+  // Lee el slot/occ directamente de WEEK_TEMPLATE (dow 1-7) en vez de duplicar el
+  // calendario aquí. Blocks con 2 variantes de día (1,3) usan solo el slot ("A"/"B");
+  // blocks con 4 variantes (2,4) además distinguen la 1ª/2ª ocurrencia de la semana
+  // ("A1"/"A2"/"B1"/"B2") con el campo occ.
   function resolveSession(block, dow){
-    if(dow===3 || dow===7) return {type:"rest"};
-    if(dow===4) return {type:"casa"};
-    var idMap = (block.dias.length===2)
-      ? {1:"A",2:"B",5:"A",6:"B"}
-      : {1:"A1",2:"B1",5:"A2",6:"B2"};
-    var dayId = idMap[dow];
+    var tmpl = WEEK_TEMPLATE[dow-1];
+    if(tmpl.tag==="rest") return {type:"rest"};
+    if(tmpl.tag==="home") return {type:"casa"};
+    var dayId = (block.dias.length===2) ? tmpl.slot : (tmpl.slot+tmpl.occ);
     var day = block.dias.filter(function(d){ return d.id===dayId; })[0];
     return {type:"gym", day:day};
   }
@@ -1075,7 +1078,10 @@
     } else {
       var day = session.day;
       document.getElementById("seqTitle").textContent = "Hoy: "+day.short;
-      var weekTop = fuerzaTopForWeek(week);
+      // Capado a 93% para el banner: todo ejercicio de fuerza de este programa tiene
+      // capFuerza:93 (dolor activo, ver EXERCISES) — nunca ondula hasta 96-99% como en
+      // un perfil sin dolor, así que el banner no debe insinuar lo contrario.
+      var weekTop = Math.min(fuerzaTopForWeek(week), 93);
       var cards = day.ej.map(function(row){ return workoutCardHTML(row, block.id, pd, weekTop); }).join("");
       var waveNote = (day.ladderTag==="fuerza") ? ' <span style="color:var(--ink-3); font-weight:400;">· tope de hoy '+weekTop+'% 1RM</span>' : "";
       mount.innerHTML = '<div class="wk-card"><div class="section-kicker" style="margin-top:14px;">'+day.short+waveNote+'</div>'+cards+'</div>';
