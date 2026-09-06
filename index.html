@@ -576,7 +576,8 @@
 
   var HOME_DAY_WARNING = { title:"Prioridad: pie y codo izquierdos", text:"Toda la movilidad de hoy, siempre dentro de un rango sin dolor. Si el dolor persiste o empeora, consulta a un profesional de la salud." };
 
-  var STORAGE_NS = "ricardo_";
+  // Id del plan, no el nombre: este archivo se publica y el prefijo queda a la vista.
+  var STORAGE_NS = "p611947_";
 
   var SAFETY_MESSAGES = {
     pie: { title:"Precaución pie izquierdo", text:"Respeta siempre un rango sin dolor. Si el dolor aparece o empeora, detén el ejercicio." },
@@ -735,6 +736,27 @@
   function lsGet(key){ try { return window.localStorage.getItem(STORAGE_NS+key); } catch(e){ return null; } }
   function lsSet(key,val){ try { window.localStorage.setItem(STORAGE_NS+key,val); } catch(e){} }
   function lsRemove(key){ try { window.localStorage.removeItem(STORAGE_NS+key); } catch(e){} }
+
+  // Migración de una sola vez: este plan usaba el nombre del estudiante como
+  // prefijo de guardado, y ese texto quedaba a la vista en el código publicado.
+  // Si queda progreso bajo el prefijo antiguo, se traslada al actual.
+  (function migrarPrefijoGuardado(){
+    try {
+      var ls = window.localStorage, claves = [], previos = [], i, m;
+      for(i=0; i<ls.length; i++) claves.push(ls.key(i));
+      for(i=0; i<claves.length; i++){
+        if(claves[i].indexOf(STORAGE_NS)===0) return; // ya migrado
+        m = claves[i].match(/^(.+?_)(plan_|oneRM_|chk_)/);
+        if(m && !/^p\d{6}_$/.test(m[1]) && previos.indexOf(m[1])===-1) previos.push(m[1]);
+      }
+      if(previos.length !== 1) return; // sin datos antiguos, o de más de un plan: no adivinar
+      for(i=0; i<claves.length; i++){
+        if(claves[i].indexOf(previos[0])===0)
+          ls.setItem(STORAGE_NS+claves[i].slice(previos[0].length), ls.getItem(claves[i]));
+      }
+    } catch(e){}
+  })();
+
   function round5(n){ return Math.round(n*2)/2; }
   function getRM(id){
     var el = document.getElementById("rm-"+id);
