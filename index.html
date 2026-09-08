@@ -242,10 +242,30 @@
   details.tech[open] summary::before{content:"Ocultar técnica ▴";}
   details.tech .exlib-cues{margin-top:8px;}
 
+  /* Nivel: control en la tarjeta de Hoy + acordeón de las 4 variantes.
+     Spec 2026-09-07 §5. */
+  .wk-controls{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:10px; flex-wrap:wrap;}
+  .nivel-select{
+    font:inherit; font-size:13px; font-weight:600; color:var(--ink); background:var(--surface);
+    border:1px solid var(--line-2); border-radius:8px; padding:6px 10px; cursor:pointer;
+  }
+  .nivel-select:focus-visible{outline:2px solid var(--accent); outline-offset:1px;}
+  details.niveles{margin-top:10px;}
+  details.niveles summary{font-size:12px; font-weight:650; color:var(--accent); cursor:pointer; list-style:none;}
+  details.niveles summary::-webkit-details-marker{display:none;}
+  details.niveles summary::before{content:"Los 4 niveles de este ejercicio ▾";}
+  details.niveles[open] summary::before{content:"Ocultar niveles ▴";}
+  .niveles-list{margin-top:8px; display:flex; flex-direction:column; gap:6px;}
+  .niveles-list .nv-row{display:flex; gap:8px; font-size:12.5px; color:var(--ink-2);}
+  .niveles-list .nv-row.is-current{color:var(--accent); font-weight:650;}
+  .niveles-list .nv-dot{width:16px; flex:none; text-align:center;}
+  .rm-group-title{font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-3); margin:16px 0 4px;}
+  .rm-group:first-child .rm-group-title{margin-top:0;}
+
   .rm-nudge{display:flex; align-items:center; justify-content:space-between; gap:10px; background:var(--surface-2); border-radius:var(--radius-s); padding:9px 11px; font-size:12.5px; color:var(--ink-2);}
   .rm-nudge button{background:var(--accent); color:var(--accent-ink); border:none; border-radius:999px; padding:6px 12px; font-size:11.5px; font-weight:650; cursor:pointer;}
 
-  /* ================= Mi 1RM tab ================= */
+  /* ================= Mi progreso tab ================= */
   .rm-row{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:11px 0; border-top:.6pt solid var(--line);}
   .rm-row:first-child{border-top:none;}
   .rm-row .rm-name{font-weight:600; font-size:13.8px;}
@@ -309,12 +329,12 @@
     </div>
   </section>
 
-  <!-- ============ TAB: MI 1RM ============ -->
+  <!-- ============ TAB: MI PROGRESO ============ -->
   <section class="tab-panel" data-tab="rm" id="panel-rm">
     <div class="wrap-narrow">
       <div class="hoy-head">
-        <h2>Tu 1RM</h2>
-        <p class="desc">Ingresa tu 1RM (o una estimación) de cada ejercicio cargado. Todo el plan calcula el peso de cada serie a partir de este valor — se guarda en este navegador.</p>
+        <h2>Mi progreso</h2>
+        <p class="desc">Ingresa tu 1RM (o una estimación) de cada ejercicio cargado — el plan calcula el peso de cada serie a partir de este valor. La plancha, el giro de tronco y los dos ejercicios de potencia no usan kilos: marca en qué nivel estás acá abajo o directamente en la tarjeta del ejercicio en «Hoy» — los dos guardan el mismo valor. Se guarda en este navegador.</p>
       </div>
 
       <div class="card panel" style="margin-top:14px;">
@@ -341,7 +361,7 @@
         <div id="rmList"></div>
       </div>
 
-      <p style="margin-top:10px; font-size:12px; color:var(--ink-2);">Plancha y core rotacional no usan 1RM: progresan por tiempo/repeticiones directamente en «Hoy».</p>
+      <p style="margin-top:10px; font-size:12px; color:var(--ink-2);">Plancha, core rotacional y los dos ejercicios de potencia progresan por nivel, no por 1RM — puedes marcarlo acá arriba o directamente en la tarjeta del ejercicio en «Hoy».</p>
     </div>
   </section>
 
@@ -387,7 +407,7 @@
 
         <div class="callout callout-accent" style="margin-top:16px;">
           <h4>Regla de progresión (autorregulada)</h4>
-          <p>En el último escalón de cada ejercicio, evalúa cuántas repeticiones te quedaron en reserva antes del fallo (RIR). Si completas el escalón con <strong>RIR ≥ 2</strong> durante dos sesiones seguidas, tu 1RM de referencia subió: actualízalo un <strong>+2.5%</strong> (tren superior) o <strong>+5%</strong> (tren inferior) en la pestaña «Mi 1RM». Si no logras completar las repeticiones con buena técnica, bájalo en la misma proporción.</p>
+          <p>En el último escalón de cada ejercicio, evalúa cuántas repeticiones te quedaron en reserva antes del fallo (RIR). Si completas el escalón con <strong>RIR ≥ 2</strong> durante dos sesiones seguidas, tu 1RM de referencia subió: actualízalo un <strong>+2.5%</strong> (tren superior) o <strong>+5%</strong> (tren inferior) en la pestaña «Mi progreso». Si no logras completar las repeticiones con buena técnica, bájalo en la misma proporción.</p>
         </div>
 
         <div class="card panel" style="margin-top:16px;">
@@ -520,7 +540,7 @@
       <div class="section-head">
         <div class="section-kicker">Referencia técnica</div>
         <h2>Biblioteca de ejercicios</h2>
-        <p class="desc">Los 15 ejercicios base del programa, con las señales técnicas clave. Usa MuscleWiki como base de datos visual: busca el nombre en inglés indicado para ver la ejecución en imagen y video.</p>
+        <p class="desc">Los 15 ejercicios base del programa, con las señales técnicas clave. Cada tarjeta tiene su botón «Ver video» para revisar la ejecución.</p>
       </div>
       <div class="exlib-grid" id="exLibraryGrid"></div>
     </div>
@@ -535,7 +555,7 @@
   </button>
   <button data-tab-btn="rm" type="button">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg>
-    <span>Mi 1RM</span><span class="ind"></span>
+    <span>Mi progreso</span><span class="ind"></span>
   </button>
   <button data-tab-btn="plan" type="button">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="14" y2="17"/></svg>
@@ -609,16 +629,16 @@
       cues:["Ajusta la almohadilla sobre los muslos antes de empezar","Sube hasta la punta del pie con control","Baja solo hasta donde NO sientas dolor en el pie izquierdo"] },
     plank:    { name:"Plancha con apoyo en rodillas", en:"Knee Plank", patron:"Core (anti-extensión)", musculos:"Recto abdominal, transverso", icon:"core", loaded:false,
       cues:["Línea recta de hombro a rodilla","Glúteos y abdomen activos","Respira, no aguantes el aire"],
-      bw:{1:{sets:3,detail:"20–30 seg"}, 2:{sets:3,detail:"30–40 seg"}, 3:{sets:3,detail:"35–45 seg"}, 4:{sets:3,detail:"40–50 seg (mantener)"}} },
+      bw:{1:{sets:3,variante:"Apoyado en las rodillas",dosis:"20–30 seg"}, 2:{sets:3,variante:"Apoyado en las rodillas",dosis:"30–40 seg"}, 3:{sets:3,variante:"Apoyado en las rodillas",dosis:"35–45 seg"}, 4:{sets:3,variante:"Apoyado en las rodillas",dosis:"40–50 seg"}} },
     core:     { name:"Giro de tronco sentado con balón liviano", en:"Seated Medicine Ball Twist", patron:"Core (anti-rotación)", musculos:"Oblicuos", icon:"core", loaded:false,
       cues:["Movimiento controlado, sin usar impulso","Espalda erguida durante todo el giro","Progresa el peso del balón gradualmente"],
-      bw:{1:{sets:3,detail:"12–15 reps por lado"}, 2:{sets:3,detail:"15 reps por lado"}, 3:{sets:3,detail:"15–20 reps por lado"}, 4:{sets:3,detail:"15–20 reps por lado (mantener)"}} },
+      bw:{1:{sets:3,variante:"Balón liviano",dosis:"12–15 reps por lado"}, 2:{sets:3,variante:"Balón liviano",dosis:"15 reps por lado"}, 3:{sets:3,variante:"Balón liviano",dosis:"15–20 reps por lado"}, 4:{sets:3,variante:"Balón liviano",dosis:"15–20 reps por lado"}} },
     potStand: { name:"Sit-to-stand con intención de velocidad", en:"Speed Sit-to-Stand", patron:"Potencia — rodilla/cadera, bajo impacto", musculos:"Cuádriceps, glúteo", icon:"squat", loaded:false, safety:"pie",
       cues:["Levántate de la silla lo más rápido posible manteniendo el control","Siéntate de vuelta lento y controlado (fase excéntrica)","Sin impulso de brazos","Detén el ejercicio si aparece dolor en el pie o la rodilla"],
-      bw:{2:{sets:3,detail:"6–8 reps"}, 3:{sets:4,detail:"6–8 reps"}, 4:{sets:4,detail:"8 reps (mantener)"}} },
+      bw:{1:{sets:3,variante:"Aprendiendo el gesto, sin impulso de brazos",dosis:"5 reps"}, 2:{sets:3,variante:"Sin impulso de brazos",dosis:"6–8 reps"}, 3:{sets:4,variante:"Sin impulso de brazos",dosis:"6–8 reps"}, 4:{sets:4,variante:"Sin impulso de brazos",dosis:"8 reps"}} },
     potPush:  { name:"Empuje de balón medicinal contra la pared", en:"Wall Medicine Ball Chest Pass", patron:"Potencia — empuje horizontal, bajo impacto", musculos:"Pectoral, tríceps, core", icon:"pushh", loaded:false, safety:"codo",
       cues:["Empuje explosivo y controlado hacia la pared","Recibe el balón con los codos semiflectados, nunca bloqueados","Detén el ejercicio si aparece dolor en el codo izquierdo"],
-      bw:{2:{sets:3,detail:"8 reps"}, 3:{sets:4,detail:"8 reps"}, 4:{sets:4,detail:"10 reps (mantener)"}} }
+      bw:{1:{sets:3,variante:"Aprendiendo el empuje, balón liviano",dosis:"6 reps"}, 2:{sets:3,variante:"Balón liviano",dosis:"8 reps"}, 3:{sets:4,variante:"Balón liviano",dosis:"8 reps"}, 4:{sets:4,variante:"Balón liviano",dosis:"10 reps"}} }
   };
 
   function dayFull(){
@@ -655,7 +675,8 @@
      DATOS DEL ESTUDIANTE — esto es lo único que cambia entre planes:
      desde aquí hasta el marcador MOTOR más abajo (LADDER, SAFETY_MESSAGES,
      EXERCISES, dayFull(), BLOCKS, MOBILITY, CARDIO, HOME_DAY_WARNING,
-     STORAGE_NS inclusive).
+     STORAGE_NS inclusive). Ver
+     docs/superpowers/specs/2026-09-02-plan-entrenamiento-plantilla-design.md §3–4.
      ================================================================ */
 
   var BLOCKS = [
@@ -773,6 +794,16 @@
     for(var i=0;i<BLOCKS.length;i++){ if(w>=BLOCKS[i].weekStart && w<=BLOCKS[i].weekEnd) return BLOCKS[i]; }
     return BLOCKS[0];
   }
+  // Nivel que se muestra hoy para un ejercicio de bw{}. El marcado por el
+  // estudiante manda; sin marca, manda el bloque (blockId ya ES el nivel
+  // que el bloque propone, 1-4). Spec 2026-09-07 §4.
+  function nivelActual(exId, blockId){
+    var e = EXERCISES[exId];
+    if(!e || !e.bw) return null;
+    var guardado = parseInt(lsGet("nivel_"+exId), 10);
+    var n = (guardado>=1 && guardado<=4) ? guardado : blockId;
+    return e.bw[n] ? n : blockId;
+  }
   var FUERZA_WAVE = [90,93,96,99];
   function fuerzaTopForWeek(week){
     var block = blockForWeek(week);
@@ -836,7 +867,7 @@
 
   function ladderTableHTML(exId, ladderType){
     if(ladderType===null){
-      return '<p style="font-size:12.5px;color:var(--ink-2);">Sin carga externa por 1RM — progresión por tiempo/repeticiones (ver pestaña Hoy o biblioteca de ejercicios).</p>';
+      return '<p style="font-size:12.5px;color:var(--ink-2);">Sin carga externa por 1RM — progresa por nivel, y la dosis exacta de tu nivel actual aparece en la pestaña Hoy.</p>';
     }
     var rows = ladderRungsFor(exId, ladderType, 100).map(function(r){
       return '<tr><td class="num">'+r.reps+' reps</td><td class="num">'+r.pct+'%</td><td class="num" data-rm-cell="'+exId+'" data-pct="'+r.pct+'" style="font-family:var(--font-mono);font-weight:650;color:var(--accent);">—</td></tr>';
@@ -855,6 +886,7 @@
           ladderChip+
         '</div>'+
         '<div style="margin-top:10px;">'+ ladderTableHTML(row.id, row.ladder) +'</div>'+
+        '<div style="margin-top:10px;"><a class="btnlink" href="'+ytLink(e)+'" target="_blank" rel="noopener">Ver video ↗</a></div>'+
       '</div>';
     }).join("");
     return '<div class="day-block"><div class="day-title"><h4>'+day.nombre+'</h4></div>'+items+'</div>';
@@ -877,7 +909,7 @@
 
   function renderMobility(){
     var rows = MOBILITY.map(function(r){
-      return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td class="num">'+r[2]+'</td><td>'+r[3]+'</td></tr>';
+      return '<tr><td>'+r[0]+'</td><td><a href="'+ytLink({name:r[1]})+'" target="_blank" rel="noopener">'+r[1]+' ↗</a></td><td class="num">'+r[2]+'</td><td>'+r[3]+'</td></tr>';
     }).join("");
     document.getElementById("mobilityTable").innerHTML = rows;
   }
@@ -889,11 +921,8 @@
     document.getElementById("cardioTable").innerHTML = rows;
   }
 
-  function ytLink(en){
-    return "https://www.youtube.com/results?search_query="+encodeURIComponent(en+" correct form tutorial");
-  }
-  function mwLink(){
-    return "https://musclewiki.com/es";
+  function ytLink(e){
+    return "https://www.youtube.com/results?search_query="+encodeURIComponent(e.name+" técnica correcta");
   }
 
   function renderLibrary(){
@@ -911,17 +940,16 @@
         '<ul class="exlib-cues">'+cues+'</ul>'+
         safety+
         '<div class="exlib-links">'+
-          '<a class="btnlink" href="'+mwLink()+'" target="_blank" rel="noopener">MuscleWiki: busca “'+e.en+'”</a>'+
-          '<a class="btnlink" href="'+ytLink(e.en)+'" target="_blank" rel="noopener">Ver video ↗</a>'+
+          '<a class="btnlink" href="'+ytLink(e)+'" target="_blank" rel="noopener">Ver video ↗</a>'+
         '</div>'+
       '</div>';
     }).join("");
     document.getElementById("exLibraryGrid").innerHTML = html;
   }
 
-  /* ================= RENDER: Mi 1RM tab ================= */
+  /* ================= RENDER: Mi progreso tab ================= */
   function renderRMList(){
-    var rows = Object.keys(EXERCISES).map(function(id){
+    var kgRows = Object.keys(EXERCISES).map(function(id){
       var e = EXERCISES[id];
       if(!e.loaded) return "";
       return '<div class="rm-row">'+
@@ -929,7 +957,19 @@
         '<div class="rm-r"><input class="rm-input" type="number" inputmode="decimal" min="0" step="0.5" id="rm-'+id+'" data-ex="'+id+'" placeholder="—"><span class="kgsuf">kg</span></div>'+
       '</div>';
     }).join("");
-    document.getElementById("rmList").innerHTML = rows;
+    var nivelRows = Object.keys(EXERCISES).map(function(id){
+      var e = EXERCISES[id];
+      if(!e.bw) return "";
+      var opts = [1,2,3,4].map(function(n){ return '<option value="'+n+'">Nivel '+n+'</option>'; }).join("");
+      return '<div class="rm-row">'+
+        '<div><div class="rm-name">'+e.name+'</div><div class="rm-pat">'+e.patron+'</div></div>'+
+        '<div class="rm-r"><select class="rm-input" style="width:auto;" id="rm-nivel-'+id+'" data-nivel-ex="'+id+'"><option value="">—</option>'+opts+'</select></div>'+
+      '</div>';
+    }).join("");
+    var html = "";
+    if(kgRows) html += '<div class="rm-group"><h4 class="rm-group-title">Lo que se mide en kilos</h4>'+kgRows+'</div>';
+    if(nivelRows) html += '<div class="rm-group"><h4 class="rm-group-title">Lo que sube por nivel</h4>'+nivelRows+'</div>';
+    document.getElementById("rmList").innerHTML = html;
   }
 
   function recalcAll(){
@@ -939,22 +979,44 @@
       var pct = parseFloat(c.getAttribute("data-pct"));
       c.textContent = kgLabel(id, pct);
     });
+    Object.keys(EXERCISES).forEach(function(id){
+      var e = EXERCISES[id];
+      if(!e.bw) return;
+      var sel = document.getElementById("rm-nivel-"+id);
+      if(!sel) return;
+      var stored = lsGet("nivel_"+id);
+      sel.value = (stored===null ? "" : stored);
+    });
     renderToday();
   }
 
   function wireRMInputs(){
     Object.keys(EXERCISES).forEach(function(id){
       var e = EXERCISES[id];
-      if(!e.loaded) return;
-      var el = document.getElementById("rm-"+id);
-      if(!el) return;
-      var stored = lsGet("oneRM_"+id);
-      if(stored !== null) el.value = stored;
-      el.addEventListener("input", function(){
-        if(el.value === "") { lsRemove("oneRM_"+id); }
-        else { lsSet("oneRM_"+id, el.value); }
-        recalcAll();
-      });
+      if(e.loaded){
+        var el = document.getElementById("rm-"+id);
+        if(el){
+          var stored = lsGet("oneRM_"+id);
+          if(stored !== null) el.value = stored;
+          el.addEventListener("input", function(){
+            if(el.value === "") { lsRemove("oneRM_"+id); }
+            else { lsSet("oneRM_"+id, el.value); }
+            recalcAll();
+          });
+        }
+      }
+      if(e.bw){
+        var sel = document.getElementById("rm-nivel-"+id);
+        if(sel){
+          var storedNivel = lsGet("nivel_"+id);
+          if(storedNivel !== null) sel.value = storedNivel;
+          sel.addEventListener("change", function(){
+            if(sel.value === "") { lsRemove("nivel_"+id); }
+            else { lsSet("nivel_"+id, sel.value); }
+            recalcAll();
+          });
+        }
+      }
     });
   }
 
@@ -1010,7 +1072,15 @@
       html += '<div class="banner banner-deload"><b>Semana de deload</b>Reduce el volumen a la mitad esta semana (menos series, misma técnica). El cuerpo consolida lo acumulado antes de subir de nivel.</div>';
     }
     if(isRetest){
-      html += '<div class="banner banner-retest"><b>Semana de retest</b>Vuelve a estimar tu 1RM en cada ejercicio y actualízalo en la pestaña «Mi 1RM» — los pesos de todo el plan se recalculan solos.</div>';
+      var block = blockForWeek(week);
+      var atras = Object.keys(EXERCISES).filter(function(id){
+        var e = EXERCISES[id];
+        return e.bw && nivelActual(id, block.id) < block.id;
+      }).map(function(id){ return EXERCISES[id].name; });
+      var nivelMsg = atras.length
+        ? ' En plancha, core y potencia, el plan ya propone nivel '+block.id+' en '+atras.join(", ")+': si te sobran 2 repeticiones o más con buena técnica, sube.'
+        : '';
+      html += '<div class="banner banner-retest"><b>Semana de retest</b>Vuelve a estimar tu 1RM en cada ejercicio y actualízalo en la pestaña «Mi progreso» — los pesos de todo el plan se recalculan solos.'+nivelMsg+'</div>';
     }
     document.getElementById("weekBanners").innerHTML = html;
   }
@@ -1027,19 +1097,31 @@
   function workoutCardHTML(row, blockId, programDay, weekTopPct){
     var e = EXERCISES[row.id];
     if(!e) return "";
-    var body;
+    var body, nivelControls = "";
     if(row.ladder===null){
-      var dose = (e.bw && e.bw[blockId]) ? e.bw[blockId] : {sets:3, detail:"progresión gradual"};
+      var nivel = nivelActual(row.id, blockId);
+      var dose = (e.bw && e.bw[nivel]) ? e.bw[nivel] : {sets:3, variante:"", dosis:"progresión gradual"};
       var bwRows = [];
       for(var si=0; si<dose.sets; si++){
         var bwKey = "chk_pd"+programDay+"_"+row.id+"_"+si;
         var bwChecked = lsGet(bwKey) === "1";
         bwRows.push('<label class="rung-row'+(bwChecked?" is-done":"")+'" data-chk-key="'+bwKey+'">'+
           '<input type="checkbox" class="rung-check"'+(bwChecked?" checked":"")+'>'+
-          '<span class="rung-reps">Serie '+(si+1)+' · '+dose.detail+'</span>'+
+          '<span class="rung-reps">Serie '+(si+1)+' · '+dose.dosis+'</span>'+
         '</label>');
       }
-      body = bwRows.join("") + '<p style="font-size:11.5px;color:var(--ink-3);margin-top:6px;">Sin carga externa — progresión por tiempo/repeticiones.</p>';
+      body = bwRows.join("");
+      if(e.bw){
+        var opts = [1,2,3,4].map(function(n){
+          return '<option value="'+n+'"'+(n===nivel?" selected":"")+'>Nivel '+n+'</option>';
+        }).join("");
+        nivelControls = '<select class="nivel-select" data-nivel-ex="'+row.id+'">'+opts+'</select>';
+        var nvRows = [1,2,3,4].map(function(n){
+          var lv = e.bw[n];
+          return '<div class="nv-row'+(n===nivel?" is-current":"")+'"><span class="nv-dot">'+(n===nivel?"●":n)+'</span><span>'+lv.variante+' · '+lv.dosis+'</span></div>';
+        }).join("");
+        body += '<details class="niveles"><summary></summary><div class="niveles-list">'+nvRows+'</div></details>';
+      }
     } else {
       var rm = getRM(row.id);
       var rungs = (row.ladder==="fuerza") ? ladderRungsFor(row.id, row.ladder, weekTopPct) : LADDER[row.ladder];
@@ -1056,10 +1138,12 @@
       ? '<div class="safety-flag">⚠ '+SAFETY_MESSAGES[e.safety].title+': '+SAFETY_MESSAGES[e.safety].text+'</div>'
       : "";
     var cues = e.cues.map(function(c){ return "<li>"+c+"</li>"; }).join("");
+    var videoBtn = '<a class="btnlink" href="'+ytLink(e)+'" target="_blank" rel="noopener">Ver video ↗</a>';
     return '<div class="card panel wk-card">'+
       '<div class="wk-head">'+ svgIcon(e.icon,"ex-icon") +
         '<div><div class="wk-name">'+e.name+'</div><div class="wk-sub">'+e.en+' · '+e.musculos+'</div></div>'+
       '</div>'+
+      '<div class="wk-controls">'+nivelControls+videoBtn+'</div>'+
       '<div style="margin-top:10px;">'+body+'</div>'+
       safety+
       '<details class="tech"><summary></summary><ul class="exlib-cues">'+cues+'</ul></details>'+
@@ -1088,7 +1172,7 @@
     } else if(session.type==="casa"){
       document.getElementById("seqTitle").textContent = "Hoy: movilidad y cardio (casa)";
       var mobRows = MOBILITY.filter(function(r){ return r[0]==="Todos" || r[0].indexOf(String(block.id))!==-1; })
-        .map(function(r){ return '<tr><td>'+r[1]+'</td><td class="num">'+r[2]+'</td><td>'+r[3]+'</td></tr>'; }).join("");
+        .map(function(r){ return '<tr><td><a href="'+ytLink({name:r[1]})+'" target="_blank" rel="noopener">'+r[1]+' ↗</a></td><td class="num">'+r[2]+'</td><td>'+r[3]+'</td></tr>'; }).join("");
       var cardioRow = CARDIO[block.id-1];
       mount.innerHTML =
         '<div class="wk-card"><div class="section-kicker" style="margin-top:14px;">Movilidad y flexibilidad</div>'+
@@ -1114,6 +1198,7 @@
 
     recalcRungLabels();
     wireRungChecks();
+    wireNivelSelects();
     wireGotoRM();
   }
 
@@ -1133,6 +1218,16 @@
         var key = row.getAttribute("data-chk-key");
         if(checkbox.checked){ lsSet(key,"1"); row.classList.add("is-done"); }
         else { lsRemove(key); row.classList.remove("is-done"); }
+      });
+    });
+  }
+
+  function wireNivelSelects(){
+    Array.prototype.forEach.call(document.querySelectorAll("#todayMount [data-nivel-ex]"), function(sel){
+      sel.addEventListener("change", function(){
+        var exId = sel.getAttribute("data-nivel-ex");
+        lsSet("nivel_"+exId, sel.value);
+        recalcAll();
       });
     });
   }
